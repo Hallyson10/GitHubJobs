@@ -1,13 +1,26 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import 'react-native-gesture-handler';
 import { StyleSheet, Text, View } from 'react-native';
+import location from './services/location';
+import api from './services/api';
+import Navigation from './src/navigation/index';
 
 export default function App() {
+  useEffect(() => {
+    (async () => {
+      try {
+        //const data = await location();
+        //const response = await api.get('/positions.json?search=node');
+        //alert(JSON.stringify(response.data))
+      } catch (error) {
+        alert(error)
+      }
+
+    })();
+  },[]);
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+      <Navigation/>
   );
 }
 
