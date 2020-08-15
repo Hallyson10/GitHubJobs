@@ -2,7 +2,7 @@ import styled from 'styled-components/native';
 import fontes from '../../../fontes/sizes';
 import colors from '../../../fontes/colors';
 
-export const Container = styled.TouchableOpacity`
+export const Container = styled.View`
   min-height : 130px;
   height : 220px;
   background : ${colors.terciary};
@@ -10,6 +10,7 @@ export const Container = styled.TouchableOpacity`
   border-radius : 8px;
   flex-direction : row;
   margin-bottom : 10px;
+  z-index : 10
 `;
 
 export const ImageContainer = styled.View `

@@ -1,7 +1,8 @@
 import styled from 'styled-components/native';
 import fontes from '../../fontes/sizes';
 import colors from '../../fontes/colors';
-
+import { Dimensions } from 'react-native';
+const { width , height } = Dimensions.get('window');
 export const Container = styled.View`
   flex:1;
   background : ${colors.primary}

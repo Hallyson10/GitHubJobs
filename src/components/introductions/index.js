@@ -12,4 +12,4 @@ const introductions = () => {
   )
 }
 
-export default introductions;
+export default React.memo(introductions);

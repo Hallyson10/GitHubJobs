@@ -1,10 +1,8 @@
-import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
 import 'react-native-gesture-handler';
-import { StyleSheet, Text, View } from 'react-native';
 import location from './services/location';
-import api from './services/api';
 import Navigation from './src/navigation/index';
+import { StatusBar } from 'expo-status-bar';
 
 export default function App() {
   useEffect(() => {
@@ -20,15 +18,9 @@ export default function App() {
     })();
   },[]);
   return (
-      <Navigation/>
+      <>
+        <StatusBar style='inverted' backgroundColor='black' />
+        <Navigation/>
+      </>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

@@ -2,15 +2,18 @@ import React from 'react';
 import * as Styles from './styles';
 import { AntDesign } from '@expo/vector-icons';
 
-const home = () => {
+const home = (props) => {
 
   return (
   <Styles.ContainerHeader>
     <Styles.ViewSearch>
-        <Styles.TitleHowItWorks>
+        <Styles.TitleHowItWorks
+        onPress={props.onPressHowApply}
+        >
             HOW IT WORKS?
         </Styles.TitleHowItWorks>
         <AntDesign
+            onPress={props.search}
             name='search1'
             size={30}
         />
@@ -27,4 +30,4 @@ const home = () => {
   )
 }
 
-export default home;
+export default React.memo(home);

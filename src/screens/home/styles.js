@@ -6,3 +6,7 @@ export const Container = styled.SafeAreaView`
   background : ${colors.primary};
   padding-top : 26px;
 `;
+export const ViewLoading = styled.View `
+    justify-content : center;
+    align-items : center;
+`

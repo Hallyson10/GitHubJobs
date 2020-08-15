@@ -7,8 +7,6 @@ import moment from 'moment';
 const job_component = (props) => {
   return (
       <Styles.Container
-      onPress={props.onPress}
-      activeOpacity={0.9}
       >
           <Styles.ImageContainer>
               <ImageMiniature uri={props.company_logo}/>
@@ -17,7 +15,7 @@ const job_component = (props) => {
           <Styles.ViewInformations>
           <Styles.ContainerTextIcons>
               <Styles.TitleTypeJob>
-              {props.titleCarg}
+              {props.titleCarg.length >= 45 ? props.titleCarg.substr(0,45) + '...' : props.titleCarg}
               </Styles.TitleTypeJob>
               </Styles.ContainerTextIcons>
               <Styles.SubTitleJob>
@@ -26,9 +24,9 @@ const job_component = (props) => {
               </Styles.SubTitleJob>
               <Styles.ContainerTextIcons>
               <Styles.TitleCityJob>
-              {props.company}
+              {props.company}{' '}
+              <Entypo name='suitcase' size={10} color={'#4F4F4F'} style={{marginLeft:4}} />
               </Styles.TitleCityJob>
-                <Entypo name='suitcase' size={10} color={'#4F4F4F'} style={{marginLeft:4}} />
               </Styles.ContainerTextIcons>
               </Styles.ViewInformations>
               <Styles.ContainerTemp>
@@ -42,4 +40,4 @@ const job_component = (props) => {
   )
 }
 
-export default job_component;
+export default React.memo(job_component);

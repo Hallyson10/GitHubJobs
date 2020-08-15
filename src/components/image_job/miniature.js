@@ -1,8 +1,10 @@
 import React from 'react';
-import { Image } from 'react-native'; 
+import {Image} from "react-native-expo-image-cache";
 import colors from '../../fontes/colors';
 
 const image_job = (props) => {
+  const preview = { uri: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==" };
+
   return <Image 
   style={{
     maxWidth : 90,
@@ -11,7 +13,7 @@ const image_job = (props) => {
     backgroundColor : colors.sextary,
     borderRadius : 8
   }}
-    source={{uri : props.uri}}
+    {...{preview , uri : props.uri}}
     resizeMode='cover'
   />
 }
