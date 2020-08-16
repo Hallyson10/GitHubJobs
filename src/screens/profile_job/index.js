@@ -1,6 +1,6 @@
 import React,{useState, useEffect, useCallback,useMemo} from 'react';
 import ProfileJobComponent from '../../components/profile_job/index';
-import { ActivityIndicator } from 'react-native';
+import { ActivityIndicator, Clipboard, Alert } from 'react-native';
 import * as Styles from './styles';
 import api from '../../../services/api';
 
@@ -34,7 +34,10 @@ const profile_job = ({navigation,route}) => {
     />
     </Styles.Container>
     <Styles.ViewButtonApply>
-    <Styles.ButtonCopy activeOpacity={0.9}>
+    <Styles.ButtonCopy onPress={async()=>{
+      await Clipboard.setString(data.url);
+      Alert.alert('Copied',data.url)
+    }} activeOpacity={0.9}>
     <Styles.TitleApply>
       Copy
     </Styles.TitleApply> 

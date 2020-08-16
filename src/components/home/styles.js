@@ -14,6 +14,7 @@ export const ViewSearch = styled.View `
 export const TitleHowItWorks = styled.Text `
     font-size : ${fontes.min}px;
     color : ${colors.secundary};
+    font-weight : 900;
     font-family : 'RedHatText-Regular'
 `
 export const TitleGitHub = styled.Text `

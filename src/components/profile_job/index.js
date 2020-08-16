@@ -9,7 +9,7 @@ const profile_job = (props) => {
       <Styles.Container>
           <Styles.ContainerHeader>
                 <Styles.ContainerImageTitle>
-                    <MiniaturaImage uri={props.company_logo} />
+                    <MiniaturaImage resizeMode='contain' uri={props.company_logo} />
                     <Styles.TitleJob>
                         {props.titleJob}
                     </Styles.TitleJob>

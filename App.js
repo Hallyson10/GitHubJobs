@@ -8,9 +8,8 @@ export default function App() {
   useEffect(() => {
     (async () => {
       try {
-        //const data = await location();
-        //const response = await api.get('/positions.json?search=node');
-        //alert(JSON.stringify(response.data))
+        const data = await location();
+        alert(JSON.stringify(data))
       } catch (error) {
         alert(error)
       }

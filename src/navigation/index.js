@@ -8,6 +8,9 @@ import HowToApply from '../screens/how_to_apply';
 import ApplyMessage from '../screens/apply_message';
 import Search from '../screens/search';
 import WebView from '../screens/web_view/index';
+import PageDocumentation1 from '../screens/documentation/page_1';
+import PageDocumentation2 from '../screens/documentation/page_2';
+import PageDocumentation3 from '../screens/documentation/page_3';
 import { JobsProvider } from '../contexts/jobs';
 import { useFonts } from 'expo-font';
 import colors from '../fontes/colors';
@@ -99,6 +102,39 @@ export default function App() {
             cardStyleInterpolator : CardStyleInterpolators.forHorizontalIOS,
             gestureEnabled : true,
         })} name="WebView" component={WebView}
+         />
+         <Stack.Screen 
+            options={({route})=>({
+            headerShown:true,
+            title:'Documentation',
+            headerTitleAlign:'center',
+            headerTitleStyle:{fontFamily : 'RedHatText-Bold'},
+            headerStyle:{backgroundColor:colors.primary},
+            cardStyleInterpolator : CardStyleInterpolators.forHorizontalIOS,
+            gestureEnabled : true,
+          })} name="PageDocumentation1" component={PageDocumentation1}
+         />
+         <Stack.Screen 
+            options={({route})=>({
+            headerShown:true,
+            title:'Documentation',
+            headerTitleAlign:'center',
+            headerTitleStyle:{fontFamily : 'RedHatText-Bold'},
+            headerStyle:{backgroundColor:colors.primary},
+            cardStyleInterpolator : CardStyleInterpolators.forHorizontalIOS,
+            gestureEnabled : true,
+          })} name="PageDocumentation2" component={PageDocumentation2}
+         />
+         <Stack.Screen 
+            options={({route})=>({
+            headerShown:true,
+            title:'Documentation',
+            headerTitleAlign:'center',
+            headerTitleStyle:{fontFamily : 'RedHatText-Bold'},
+            headerStyle:{backgroundColor:colors.primary},
+            cardStyleInterpolator : CardStyleInterpolators.forHorizontalIOS,
+            gestureEnabled : true,
+          })} name="PageDocumentation3" component={PageDocumentation3}
          />
       </Stack.Navigator>
       </JobsProvider>
