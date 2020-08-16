@@ -8,16 +8,15 @@ import NotJobComponent from '../../components/home/not_jobs/message_not_post';
 import JobsContext from '../../contexts/jobs';
 
 const home = (props) => {
-  const { jobs,searchJobs,loadingJobs,filter:{atived} } = useContext(JobsContext);
-
-  useEffect( () => {
-      function findJobs(){
-      try {
-         searchJobs();
-      } catch (error) {
-        alert('Desculpa, Ocorreu um erro inesperado :/')
-      }
+  const { jobs,searchJobs,loadingJobs,filter:{atived},clearFilter } = useContext(JobsContext);
+  async function findJobs(){
+    try {
+       await searchJobs();
+    } catch (error) {
+      alert('Desculpa, Ocorreu um erro inesperado :/')
     }
+  }
+  useEffect(() => {
     findJobs();
   },[]);
 
@@ -33,7 +32,10 @@ const home = (props) => {
           {loadingJobs ? <Styles.ViewLoading>
           <ActivityIndicator size='small' color='#000' />
           </Styles.ViewLoading> : null }
-          <Introduction/>
+          <Introduction
+            textClear={atived ? true : false}
+            clearPress={clearFilter}
+          />
         </>
         }
           data={jobs}

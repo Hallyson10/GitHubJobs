@@ -3,8 +3,7 @@ import fontes from '../../../fontes/sizes';
 import colors from '../../../fontes/colors';
 
 export const Container = styled.View`
-  min-height : 130px;
-  height : 220px;
+  min-height : 220px;
   background : ${colors.terciary};
   margin-horizontal : 20px;
   border-radius : 8px;

@@ -5,7 +5,9 @@ import { createStackNavigator,CardStyleInterpolators,TransitionPresets } from '@
 import Home from '../screens/home';
 import ProfileJob from '../screens/profile_job';
 import HowToApply from '../screens/how_to_apply';
+import ApplyMessage from '../screens/apply_message';
 import Search from '../screens/search';
+import WebView from '../screens/web_view/index';
 import { JobsProvider } from '../contexts/jobs';
 import { useFonts } from 'expo-font';
 import colors from '../fontes/colors';
@@ -75,6 +77,28 @@ export default function App() {
             cardStyleInterpolator : CardStyleInterpolators.forHorizontalIOS,
             gestureEnabled : true,
         })} name="Search" component={Search}
+         />
+         <Stack.Screen 
+            options={({route})=>({
+            headerShown:true,
+            title:'Apply',
+            headerTitleAlign:'center',
+            headerTitleStyle:{fontFamily : 'RedHatText-Bold'},
+            headerStyle:{backgroundColor:colors.primary},
+            cardStyleInterpolator : CardStyleInterpolators.forHorizontalIOS,
+            gestureEnabled : true,
+        })} name="ApplyMessage" component={ApplyMessage}
+         />
+         <Stack.Screen 
+            options={({route})=>({
+            headerShown:false,
+            title:'Apply',
+            headerTitleAlign:'center',
+            headerTitleStyle:{fontFamily : 'RedHatText-Bold'},
+            headerStyle:{backgroundColor:colors.primary},
+            cardStyleInterpolator : CardStyleInterpolators.forHorizontalIOS,
+            gestureEnabled : true,
+        })} name="WebView" component={WebView}
          />
       </Stack.Navigator>
       </JobsProvider>

@@ -4,7 +4,7 @@ import { ActivityIndicator } from 'react-native';
 import * as Styles from './styles';
 import api from '../../../services/api';
 
-const profile_job = ({route}) => {
+const profile_job = ({navigation,route}) => {
   const [data,setData] = useState(null);
   
   useEffect(()=>{
@@ -31,8 +31,6 @@ const profile_job = ({route}) => {
       titleJob={data.title}
       description={data.description}
       company_logo={data.company_logo}
-      how_to_apply={data.how_to_apply}
-      company_url={data.company_url}
     />
     </Styles.Container>
     <Styles.ViewButtonApply>
@@ -41,7 +39,10 @@ const profile_job = ({route}) => {
       Copy
     </Styles.TitleApply> 
     </Styles.ButtonCopy>
-    <Styles.ButtonApply activeOpacity={0.9}>   
+    <Styles.ButtonApply 
+    onPress={()=> navigation.navigate('ApplyMessage',
+    {company_url:data.company_url, how_to_apply:data.how_to_apply})}
+    activeOpacity={0.9}>   
     <Styles.TitleApply>
       How to apply
     </Styles.TitleApply> 

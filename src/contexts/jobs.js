@@ -9,7 +9,8 @@ const JobsContext = createContext({
     setInputSearch : (text) => {},
     setLocation : (text) => {},
     setFullTime : (value) => {},
-    filterJobs : ()=>{}
+    filterJobs : ()=>{},
+    clearFilter : () => {}
 });
 
 export const JobsProvider = ( {children} ) => {
@@ -32,11 +33,17 @@ export const JobsProvider = ( {children} ) => {
     async function filterJobs(){
         setLoadingJobs(true);
         setFilterAtived(true);
+        setJobs([]);
         const response = await functions.filterJobs({
             description, fulltime, location
         });
         setJobs(response);
          setLoadingJobs(false);
+    }
+    async function clearFilter(){
+        setPage(1);
+        setJobs([]);
+        await searchJobs();
     }
 
     return(
@@ -48,6 +55,7 @@ export const JobsProvider = ( {children} ) => {
         loadingJobs : loadingJobs,
         searchJobs,
         filterJobs,
+        clearFilter,
         setInputSearch : (text)=> setDescription(text),
         setLocation : (text) => setLocation(text),
         setFullTime : (value) => setFullTime(value)
