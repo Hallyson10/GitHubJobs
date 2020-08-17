@@ -20,5 +20,5 @@ Para testar o app, basta que você :
 - depois de baixado as dependências da aplicação rode o comando : $ expo start ou yarn start
 - abra o aplicativo expo no seu dispositivo e mire a câmera de leitura do QR Code no QR code que apareceu no site web que abriu pra você, quando conectado
 você irá visualizar e testar todos os serviços da aplicação.
-
+![Screenshot](https://postimg.cc/HjHd2ZSb)
 # Espero que gostem, até mais!!!
