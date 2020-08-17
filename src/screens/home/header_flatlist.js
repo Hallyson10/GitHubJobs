@@ -17,10 +17,10 @@ const home = (props) => {
   return (
     <>
     <Cabecalho
-    onPressHowApply={()=>props.navigation.navigate('HowToApply')}
-    search={()=>props.navigation.navigate('Search')}
+    onPressHowApply={()=> props.navigation.navigate('HowToApply')}
+    search={() => props.navigation.navigate('Search')}
      />
-     <Buttons documentationScreen={()=>props.navigation.navigate('PageDocumentation1')} />
+     <Buttons documentationScreen={() => props.navigation.navigate('PageDocumentation1')} />
     {loadingJobs ? <Styles.ViewLoading>
     <ActivityIndicator size='small' color='#000' />
     </Styles.ViewLoading> : null }

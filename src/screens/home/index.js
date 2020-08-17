@@ -1,10 +1,11 @@
-import React,{ useState, useEffect ,useContext} from 'react';
+import React,{ useEffect ,useContext} from 'react';
 import * as Styles from './styles';
 import { FlatList,ActivityIndicator,TouchableOpacity } from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 import JobComponent from '../../components/home/job_component';
 import HeaderFlatList from './header_flatlist';
-import NotJobComponent from '../../components/home/not_jobs/message_not_post';
 import JobsContext from '../../contexts/jobs';
+import location from '../../../services/location';
 
 const home = (props) => {
   const { 
@@ -14,14 +15,30 @@ const home = (props) => {
     filter:{atived},
     searchJobs,
      } = useContext(JobsContext);
-  async function findJobs(){
-    try {
-       await searchJobs();
-       
-    } catch (error) {
-      alert('Desculpa, Ocorreu um erro inesperado :/')
-    }
-  }
+    
+  
+      async function findJobs(){
+        try {
+          const asyncStorage = await AsyncStorage.getItem('coords');
+          var data;
+          if(asyncStorage === null){
+            data = await location();
+            if(data){
+              await searchJobs(data.coords);
+              await AsyncStorage.setItem('coords',JSON.stringify(data.coords));
+            }else{
+             await searchJobs(false);
+            }
+          }else{
+            const coords = JSON.parse(asyncStorage);
+            await searchJobs(coords);
+
+          }
+        } catch (error) {
+          alert(error)
+        }
+      }
+    
   useEffect(() => {
     findJobs();
   },[filterClear]);
@@ -39,7 +56,7 @@ const home = (props) => {
             </Styles.ViewLoading> : null }
             </>
             }
-            ListFooterComponentStyle={{marginBottom:20}}
+          ListFooterComponentStyle={{marginBottom:20}}
           data={jobs}
           key={props => props.id}
           keyExtractor={props => props.id}

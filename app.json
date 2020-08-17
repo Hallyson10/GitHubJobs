@@ -6,7 +6,7 @@
     "orientation": "portrait",
     "icon": "./assets/iconGit.png",
     "splash": {
-      "image": "./assets/iconGit4.png",
+      "image": "./assets/iconGitAtual.png",
       "resizeMode": "contain",
       "backgroundColor": "#F6F6F6"
     },

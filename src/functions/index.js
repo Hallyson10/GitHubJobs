@@ -9,3 +9,7 @@ export async function filterJobs({description, fulltime, location}){
     const response = await api.get(`/positions.json?description=${description}&full_time=${fulltime}&location=${location}`);
     return response.data;
 }
+export async function searchJobsCoords(coords){
+    const response = await api.get(`/positions.json?lat=${coords.latitude}&long=${coords.longitude}`);
+    return response.data;
+}

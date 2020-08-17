@@ -1,4 +1,4 @@
-import React,{useState, useEffect, useCallback,useMemo} from 'react';
+import React,{useState, useEffect} from 'react';
 import ProfileJobComponent from '../../components/profile_job/index';
 import { ActivityIndicator, Clipboard, Alert } from 'react-native';
 import * as Styles from './styles';

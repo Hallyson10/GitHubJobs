@@ -1,4 +1,4 @@
-import React,{ createContext,useState } from 'react';
+import React,{ createContext,useState,useEffect } from 'react';
 import * as functions from '../functions/index';
 
 const JobsContext = createContext({
@@ -7,9 +7,7 @@ const JobsContext = createContext({
     loadingJobs : false,
     filterClear : false,
     dataOptionsSelected : [],
-    coords : {},
     searchJobs : () => {},
-    setCoords : (coord) => {},
     setInputSearch : (text) => {},
     selectedOption : (text) => {},
     setLocation : (text) => {},
@@ -29,7 +27,6 @@ const arrayOptionsSearch = [
   ];
 export const JobsProvider = ( {children} ) => {
     const [Jobs, setJobs ] = useState([]);
-    const [coords,setCoords] = useState({long:'',lat:''});
     const [description,setDescription] = useState('');
     const [location,setLocation] = useState('');
     const [fulltime,setFullTime] = useState(false);
@@ -55,17 +52,36 @@ export const JobsProvider = ( {children} ) => {
         filterJobs(item.title);
       }
     }
-    async function searchJobs(){
+    async function searchJobs(coordenadasAtual){
+        try {
         setLoadingJobs(true);
         setFilterAtived(false);
-        const response = await functions.searchAllJobs(page);
-        setJobs([...Jobs,...response]);
+        if(coordenadasAtual){
+            var response = await functions.searchJobsCoords(coordenadasAtual);
+            if(response.length > 0){
+                setJobs([...Jobs,...response]);
+            }else{
+                const AllJobs = await functions.searchAllJobs(page);
+                setJobs([...Jobs,...AllJobs]);
+            }
+            
+        }else{
+            const AllJobs = await functions.searchAllJobs(page);
+            setJobs([...Jobs,...AllJobs]);
+        }
         setLoadingJobs(false);
         setPage(page => page + 1);
-        setFilterClear(false);
+        setFilterClear(false);//causando re-render//
         resetSelectedOptions();
+        } catch (error) {
+            setLoadingJobs(false);
+            clearFilter();
+            resetSelectedOptions();
+        }
+        
     }
     async function filterJobs(text){
+        try {
         setLoadingJobs(true);
         setFilterAtived(true);
         setJobs([]);
@@ -78,12 +94,21 @@ export const JobsProvider = ( {children} ) => {
         }
         setJobs(response);
         setLoadingJobs(false);
+        } catch (error) {
+            return false;
+        }
+        
     }
     async function findJobsFilter(description){
-        const response = await functions.filterJobs({
-            description, fulltime, location
-        });
-        return response;
+        try {
+            const response = await functions.filterJobs({
+                description, fulltime, location
+            });
+            return response;
+        } catch (error) {
+            return false;
+        }
+        
     }
     async function clearFilter(){
         setPage(1);
@@ -91,7 +116,7 @@ export const JobsProvider = ( {children} ) => {
         setLocation('');
         setDescription('');
         setFullTime(false);
-        setFilterClear(true);
+        setFilterClear(true);//causando re-render
         resetSelectedOptions();
     }
     function resetSelectedOptions(){
@@ -103,21 +128,20 @@ export const JobsProvider = ( {children} ) => {
     }
 
     return(
-    <JobsContext.Provider value={{
+    <JobsContext.Provider 
+    value={{
         jobs : Jobs,
         filter : {description : description,location : location, fulltime : fulltime,atived : filterAtived},
-        coords : coords,
         location : location,
         fulltime: fulltime, 
         loadingJobs : loadingJobs,
         filterClear : filterClear,
         dataOptionsSelected : dataOptionsSelected,
         searchJobs,
-        setCoords : (coord) => setCoords(coord),
-        filterJobs : (text)=>filterJobs(text),
+        filterJobs : (text) => filterJobs(text),
         selectedOption : (text) => selectedOption(text),
         clearFilter,
-        setInputSearch : (text)=> setDescription(text),
+        setInputSearch : (text) => setDescription(text),
         setLocation : (text) => setLocation(text),
         setFullTime : (value) => setFullTime(value)
         }}>
