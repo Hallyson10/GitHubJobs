@@ -21,4 +21,6 @@ Para testar o app, basta que você :
 - abra o aplicativo expo no seu dispositivo e mire a câmera de leitura do QR Code no QR code que apareceu no site web que abriu pra você, quando conectado
 você irá visualizar e testar todos os serviços da aplicação.
 ![Screenshot](https://i.postimg.cc/tRnJ98Wv/imageApp.jpg)
+![Screenshot](https://i.postimg.cc/pLLtLn3V/image-App1.jpg)
+
 # Espero que gostem, até mais!!!
