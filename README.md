@@ -25,3 +25,4 @@ você irá visualizar e testar todos os serviços da aplicação.
 ![Screenshot](https://i.postimg.cc/nhz6JfQC/image-App2.jpg)
 
 # Espero que gostem, até mais!!!
+#Link no figma para visualizar as telas : https://www.figma.com/file/zyM7imtEdGO5m10HuJbJVj/GitHub---Jobs?node-id=0%3A1
